@@ -16,7 +16,6 @@ class ApiManager: NSObject {
     static var isInternetAvailable: Bool = true
     ///
     fileprivate var reachability: Reachability?
-    
     ///
     static let sharedManager: SessionManager = {
         let configuration = URLSessionConfiguration.default
