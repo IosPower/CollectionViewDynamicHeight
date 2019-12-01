@@ -1,0 +1,13 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'CollectionViewDynamicHeight' do
+ 
+pod 'DropDown', '2.3.4'
+pod 'Alamofire'
+pod 'ReachabilitySwift'
+pod 'MBProgressHUD'
+pod 'SwiftyJSON'
+pod 'Kingfisher'
+pod 'SVGKit'
+end
