@@ -90,6 +90,66 @@ class ApiManager: NSObject {
         }
     }
     
+    /*
+    
+    /// Custom Multipart API Calling methods. We can call any rest API With this common API calling method.
+    ///
+    /// - Parameters:
+    ///   - path: API path
+    ///   - ver: firmware version
+    ///   - httpMethod: http Method.
+    ///   - queue: queue object.
+    ///   - success: success block.
+    ///   - failure: failure block.
+    func uploadRequest(parameter: Parameters?, images: [UIImage]?, imageKeysArray: [String], serverUrl: String, httpMethod: HTTPMethod, queue: DispatchQueue? = nil, isLoder: Bool = true, success:@escaping(_ response: [String: Any]) -> Void, failure:@escaping( _ error: Error?) -> Void) {
+        
+        let completeURL = ApiConfiguration.sharedInstance.serverURL + serverUrl
+        
+        // Set header
+        let strToken = Constant.storeService.strToken ?? ""
+        let headerParam = [ModelKeys.ApiHeaderKeys.contentType: ModelKeys.ApiHeaderKeys.multipartOrFormData,
+                           ModelKeys.ApiHeaderKeys.token: strToken]
+        
+        ApiManager.sharedManager.upload(multipartFormData: { (multipartFormData) in
+            if let images = images, imageKeysArray.count == images.count {
+                for (index, image) in images.enumerated() {
+                    let imageKey = imageKeysArray[index]
+                    guard let data = image.jpegData(compressionQuality: 1.0) else {
+                        continue
+                    }
+                    let imageName = CommonMethods.randomString(length: 10)
+                    multipartFormData.append(data, withName: imageKey, fileName: imageName + ".jpg", mimeType: ModelKeys.MimeType.jpg)
+                }
+            }
+            
+            for (key, value) in (parameter ?? [:]) {
+                guard let data = "\(value)".data(using: String.Encoding.utf8) else { continue }
+                multipartFormData.append(data, withName: key as String)
+            }
+            
+        }, usingThreshold: UInt64.init(), to: completeURL, method: .post, headers: headerParam, encodingCompletion: { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                upload.uploadProgress(closure: { (progress) in
+                    print("Upload Progress: \(progress.fractionCompleted)")
+                })
+                upload.responseJSON { response in
+                    print(response)
+                    if let responseDict = response.result.value as? [String: Any] {
+                        success(responseDict)
+                    } else {
+                        failure(response.result.error)
+                    }
+                }
+            case .failure(let error):
+                if isLoder {
+                    Constant.window?.hideHud()
+                }
+                failure(error)
+            }
+        })
+    }
+    */
     
     // MARK: - Fail Response
     /// getFailResponse
