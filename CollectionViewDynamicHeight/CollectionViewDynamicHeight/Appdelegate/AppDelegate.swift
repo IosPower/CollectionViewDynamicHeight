@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = ApiManager.sharedInstance
         ApiConfiguration.sharedInstance.buildEnvironment = .development
-        
+  
+
         return true
     }
 }
