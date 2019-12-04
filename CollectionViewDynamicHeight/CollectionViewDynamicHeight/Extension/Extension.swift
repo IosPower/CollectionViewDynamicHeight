@@ -95,6 +95,16 @@ extension String {
         }
         return self
     }
+    
+    func dateToStringUTCtoLocal() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let dateNew = dateFormatter.date(from: self)
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: dateNew!)
+    }
 }
 // MARK: - UIButton Extension
 extension UIButton {
@@ -257,6 +267,55 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func stringFor(format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let strDate = dateFormatter.string(from: self)
+        return strDate
+    }
+    
+    ///
+    func todayDateAndTimeInString() -> String {
+        let dateToday = Date()
+        let strDate = dateToday.stringFor(format: "yyyy-MM-dd hh:mm:ss")
+        return strDate
+    }
+    
+    ///
+    func todayDataWithTime() -> String {
+        let dateToday = Date()
+        let strDate = dateToday.stringFor(format: "yyyyMMddhhmmss")
+        return strDate
+    }
+    
+    func yearsFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.year, from: date, to: self, options: []).year!
+    }
+    
+    func monthsFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.month, from: date, to: self, options: []).month!
+    }
+    
+    func weeksFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.weekOfYear, from: date, to: self, options: []).weekOfYear!
+    }
+    
+    func daysFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.day, from: date, to: self, options: []).day!
+    }
+    
+    func hoursFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.hour, from: date, to: self, options: []).hour!
+    }
+    
+    func minutesFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.minute, from: date, to: self, options: []).minute!
+    }
+    
+    func secondsFrom(_ date: Date) -> Int {
+        return (Calendar.current as NSCalendar).components(NSCalendar.Unit.second, from: date, to: self, options: []).second!
+    }
 }
 
 // MARK: - Window Extension
@@ -271,7 +330,7 @@ extension UIViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-   
+    
     /// common alert controller
     func showAlert(_ title: String = "App Name", message: String, buttonTitle: String) {
         DispatchQueue.main.async { [unowned self] in
@@ -394,6 +453,32 @@ extension Sequence where Element: Equatable {
                 maxWidth = label.frame.size.width + 20
             }
         }
-       return maxWidth
+        return maxWidth
+    }
+}
+
+// MARK: Array Extension
+extension Array where Element == [String: Any] {
+    func sortedArray(by key: String) -> [[String: Any]] {
+        return sorted {
+            $0[key] as? String ?? "" < $1[key] as? String ?? ""
+        }
+    }
+    
+    func sortedOrderAscending(by key: String) -> [[String: Any]] {
+        return sorted {
+            ($0[key] as? String ?? "").caseInsensitiveCompare($1[key] as? String ?? "") == .orderedAscending
+        }
+    }
+    
+    func sortedOrderDescending(by key: String) -> [[String: Any]] {
+        return sorted {
+            ($0[key] as? String ?? "").caseInsensitiveCompare($1[key] as? String ?? "") == .orderedDescending
+        }
+    }
+}
+extension Array where Element: Hashable {
+    var orderedSet: Array {
+        return NSOrderedSet(array: self).array as? Array ?? []
     }
 }

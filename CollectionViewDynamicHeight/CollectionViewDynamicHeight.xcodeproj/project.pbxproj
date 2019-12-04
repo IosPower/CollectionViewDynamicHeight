@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8403D31A2393C1FC00E45461 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8403D3192393C1FB00E45461 /* Extension.swift */; };
+		842A53F223983D6800ABB34D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A53F123983D6800ABB34D /* CameraVC.swift */; };
+		842A53F42398461300ABB34D /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A53F32398461300ABB34D /* CommonMethods.swift */; };
+		842A53F62398469C00ABB34D /* FileManageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A53F52398469C00ABB34D /* FileManageHelper.swift */; };
 		84B6B1182392FC7000F82786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B6B1172392FC7000F82786 /* Assets.xcassets */; };
 		84B6B12F2392FD7C00F82786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B6B12D2392FD7C00F82786 /* AppDelegate.swift */; };
 		84B6B1322392FDB200F82786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B6B1302392FDB200F82786 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 		1133F110B662013E9D0C4112 /* Pods-CollectionViewDynamicHeight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewDynamicHeight.release.xcconfig"; path = "Target Support Files/Pods-CollectionViewDynamicHeight/Pods-CollectionViewDynamicHeight.release.xcconfig"; sourceTree = "<group>"; };
 		6304DFA69D98FE459811599F /* Pods_CollectionViewDynamicHeight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectionViewDynamicHeight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8403D3192393C1FB00E45461 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		842A53F123983D6800ABB34D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		842A53F32398461300ABB34D /* CommonMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		842A53F52398469C00ABB34D /* FileManageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManageHelper.swift; sourceTree = "<group>"; };
 		84B6B10B2392FC6E00F82786 /* CollectionViewDynamicHeight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewDynamicHeight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B6B1172392FC7000F82786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B6B12C2392FD7C00F82786 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 		84B6B1222392FC8000F82786 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
+				842A53F52398469C00ABB34D /* FileManageHelper.swift */,
+				842A53F32398461300ABB34D /* CommonMethods.swift */,
 				84B6B146239302DA00F82786 /* Messages.swift */,
 				84B6B1442393028600F82786 /* Enums.swift */,
 				84B6B1422393025E00F82786 /* ModelKeys.swift */,
@@ -157,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				84B6B1362392FEDA00F82786 /* CountryDetailsVC.swift */,
+				842A53F123983D6800ABB34D /* CameraVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -341,12 +350,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B6B13F2393015C00F82786 /* Constant.swift in Sources */,
+				842A53F223983D6800ABB34D /* CameraVC.swift in Sources */,
 				84B6B1372392FEDA00F82786 /* CountryDetailsVC.swift in Sources */,
 				84B6B1492393055700F82786 /* CountryDetailsViewModel.swift in Sources */,
 				84B6B1452393028600F82786 /* Enums.swift in Sources */,
 				84B6B162239308A700F82786 /* CountryDetailsModel.swift in Sources */,
 				84B6B12F2392FD7C00F82786 /* AppDelegate.swift in Sources */,
 				84B6B1352392FEA300F82786 /* DetailCollectionViewCell.swift in Sources */,
+				842A53F62398469C00ABB34D /* FileManageHelper.swift in Sources */,
 				84B6B1432393025F00F82786 /* ModelKeys.swift in Sources */,
 				84B6B147239302DA00F82786 /* Messages.swift in Sources */,
 				8403D31A2393C1FC00E45461 /* Extension.swift in Sources */,
@@ -358,6 +369,7 @@
 				84B6B13D239300F900F82786 /* ApiManager.swift in Sources */,
 				84B6B13B239300F100F82786 /* ApiList.swift in Sources */,
 				84B6B161239308A700F82786 /* Translations.swift in Sources */,
+				842A53F42398461300ABB34D /* CommonMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
